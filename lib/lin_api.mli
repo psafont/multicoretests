@@ -20,6 +20,7 @@ val small_nat : (int, 'a, 'b, combinable) ty
 val int32 : (Int32.t, 'a, 'b, combinable) ty
 val int64 : (Int64.t, 'a, 'b, combinable) ty
 val float : (float, 'a, 'b, combinable) ty
+val int_bound: int -> ((int, 'a, 'b, combinable) ty)
 val option :
   ?ratio:float ->
   ('a, 'c, 's, combinable) ty -> ('a option, 'c, 's, combinable) ty
@@ -29,7 +30,6 @@ val opt :
 val list : ('a, 'c, 's, combinable) ty -> ('a list, 'c, 's, combinable) ty
 val state : ('a, constructible, 'a, noncombinable) ty
 val t : ('a, constructible, 'a, noncombinable) ty
-val int_bound : int -> (int, 'a, 'b, combinable) ty
 val print_result :
   ('a -> string) -> ('b -> string) -> ('a, 'b) result -> string
 val or_exn :
