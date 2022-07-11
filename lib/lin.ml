@@ -141,9 +141,9 @@ module MakeDomThr(Spec : CmdSpec)
     let dom1 = Domain.spawn (fun () -> while Atomic.get wait do Domain.cpu_relax() done; try Ok (interp sut cmds1) with exn -> Error exn) in
     let dom2 = Domain.spawn (fun () -> Atomic.set wait false; try Ok (interp sut cmds2) with exn -> Error exn) in
     let obs1 = Domain.join dom1 in
-    let _ = Printf.printf("dom1 done\n%!") in
+    (*let _ = Printf.printf("dom1 done\n%!") in*)
     let obs2 = Domain.join dom2 in
-    let _ = Printf.printf("dom2 done\n%!") in
+    (*let _ = Printf.printf("dom2 done\n%!") in*)
     let obs1 = match obs1 with Ok v -> v | Error exn -> raise exn in
     let obs2 = match obs2 with Ok v -> v | Error exn -> raise exn in
     let seq_sut = Spec.init () in
@@ -291,15 +291,15 @@ module Make(Spec : CmdSpec)
         let arb_cmd_triple = arb_cmds_par seq_len par_len in
         let rep_count = 50 in
         Test.make ~count ~retries:3 ~name:("Linearizable " ^ name ^ " with Domain")
-          arb_cmd_triple (fun t -> Printf.printf("start\n%!");
-                           Printf.printf "%s\n%!"
+          arb_cmd_triple (fun t -> (*Printf.printf("start\n%!");*)
+                           (* Printf.printf "%s\n%!"
                              ((Print.triple
                                 (Print.list Spec.show_cmd)
                                 (Print.list Spec.show_cmd)
                                 (Print.list Spec.show_cmd))
-                             t);
+                             t); *)
                           let out = (repeat rep_count lin_prop_domain t) in
-                           Printf.printf("end\n%!"); out)
+                          (* Printf.printf("end\n%!");*) out)
     | `Thread ->
         let arb_cmd_triple = arb_cmds_par seq_len par_len in
         let rep_count = 100 in
