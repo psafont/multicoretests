@@ -47,7 +47,7 @@ on:
 jobs:
   build-and-test:
     env:
-      ONLY_TEST: "src/domain/domain_spawntree.ml"
+      ONLY_TEST: "src/domain/domain_spawntree.exe"
       SEED: ${{ inputs.seed }}
       REPEATS: ${{ inputs.repeats }}
       COMPILER:  ${{ inputs.compiler }}
