@@ -47,13 +47,13 @@ on:
 jobs:
   build-and-test:
     env:
-      ONLY_TEST: ${{ inputs.only_test }}
+      ONLY_TEST: "src/domain/domain_spawntree.ml"
       SEED: ${{ inputs.seed }}
       REPEATS: ${{ inputs.repeats }}
       COMPILER:  ${{ inputs.compiler }}
       OCAML_COMPILER_COMMIT: ${{ inputs.compiler_commit }}
       OCAML_COMPILER_BRANCH: ${{ inputs.compiler_branch }}
-      REPEATS_FAILFAST: ${{ inputs.repeats_failfast }}
+      REPEATS_FAILFAST: true
 
     runs-on: ${{ inputs.runs_on }}
 
