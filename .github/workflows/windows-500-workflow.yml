@@ -5,3 +5,6 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     uses: ./.github/workflows/windows.yml
+    with:
+      only_test: 'src/domain/domain_spawntree.exe'
+      repeats: '50'

@@ -7,3 +7,5 @@ jobs:
     uses: ./.github/workflows/windows.yml
     with:
       compiler: '5.0'
+      only_test: 'src/domain/domain_spawntree.exe'
+      repeats: '50'
