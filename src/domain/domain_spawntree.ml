@@ -74,7 +74,7 @@ let rec dom_interp a = function
 let t ~max_depth ~max_width = Test.make
     ~name:"domain_spawntree - with Atomic"
     ~count:100
-    ~retries:100
+    ~retries:10
     (*~print:show_cmd (gen max_depth max_width)*)
     (make ~print:show_cmd ~shrink:shrink_cmd (gen max_depth max_width))
 
@@ -89,7 +89,16 @@ let t ~max_depth ~max_width = Test.make
           with
           | Failure s ->
               if s = "failed to allocate domain"
-              then count_spawns c > max_domains
-              else false))
+              then
+                begin
+                  let num_spawns = count_spawns c in
+                  Printf.printf "Failure - failed to allocate domains, count_spawns %i\n%!" num_spawns;
+                  count_spawns c > max_domains
+                end
+              else
+                begin
+                  Printf.printf "Failure - %s\n%!" s;
+                  false
+                end))
 ;;
 QCheck_base_runner.run_tests_main [t ~max_depth:20 ~max_width:10]
