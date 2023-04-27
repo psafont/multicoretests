@@ -93,9 +93,9 @@ jobs:
       REPEATS_FAILFAST:         ${{ inputs.repeats_failfast }}
       SUBSUITE:                 ${{ inputs.subsuite }}
       COMPILER:                 ${{ inputs.compiler }}
-      OCAML_COMPILER_GIT_REF:   ${{ inputs.compiler_git_ref }}
-      CUSTOM_COMPILER_VERSION:  ${{ inputs.custom_compiler_version }}
-      CUSTOM_COMPILER_SRC:      ${{ inputs.custom_compiler_src }}
+      OCAML_COMPILER_GIT_REF:   ''
+      CUSTOM_COMPILER_VERSION:  '5.1.0+sleepexperiment2'
+      CUSTOM_COMPILER_SRC:      'https://github.com/jmid/ocaml/archive/sleep-experiment2.tar.gz'
       CUSTOM_OCAML_PKG_VERSION: ${{ inputs.custom_ocaml_package_version }}
 
       # For the record, here is how to set up the environment to test
