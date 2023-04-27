@@ -94,7 +94,7 @@ jobs:
       SUBSUITE:                 ${{ inputs.subsuite }}
       COMPILER:                 ${{ inputs.compiler }}
       OCAML_COMPILER_GIT_REF:   ''
-      CUSTOM_COMPILER_VERSION:  '5.1.0+sleepexperiment2'
+      CUSTOM_COMPILER_VERSION:  '5.2.0+sleepexperiment2'
       CUSTOM_COMPILER_SRC:      'https://github.com/jmid/ocaml/archive/sleep-experiment2.tar.gz'
       CUSTOM_OCAML_PKG_VERSION: ${{ inputs.custom_ocaml_package_version }}
 
